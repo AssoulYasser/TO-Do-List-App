@@ -28,7 +28,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:hint="description"
-        android:layout_marginVertical="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -40,6 +39,46 @@
             android:maxLines="5"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <LinearLayout
+        android:layout_marginVertical="25dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:paddingRight="10dp"
+            android:hint="hour"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+            <AutoCompleteTextView
+                android:id="@+id/hourTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLines="5"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:paddingLeft="10dp"
+            android:hint="minut"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+            <AutoCompleteTextView
+                android:id="@+id/minutTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLines="5"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/addBtn"

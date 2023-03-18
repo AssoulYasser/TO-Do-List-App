@@ -1,20 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/myHeader"
-    android:orientation="vertical"
-    android:background="@color/black"
+    android:orientation="horizontal"
+    android:background="?attr/colorPrimary"
+    android:padding="25dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/imageCV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="200dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/myTextHeader"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:src="@drawable/ic_baseline_refresh_24"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/myTextHeader"
         android:textColor="@color/white"
-        android:layout_gravity="center"
         android:layout_marginVertical="14dp"
-        android:text="Hey It's me Header"
+        android:text="Good Morning, Username"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/imageCV"
+        app:layout_constraintBottom_toTopOf="@id/serachIL"
+        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-</LinearLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:layout_toStartOf="@id/myHeader"
+        android:onClick="refresh"
+        android:src="@drawable/ic_baseline_refresh_24"
+        app:layout_constraintBottom_toTopOf="@+id/serachIL"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/serachIL"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="search"
+        app:startIconDrawable="@drawable/ic_baseline_search_24"
+        app:startIconTint="?attr/colorPrimary"
+        android:textColorHint="?android:strokeColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/myTextHeader">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:background="@drawable/search_bar_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
