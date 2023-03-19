@@ -33,12 +33,15 @@ class MainActivity : AppCompatActivity() {
         recycler.adapter = DATA.adapter
         recycler.layoutManager = LinearLayoutManager(this)
 
+
         HttpRequest.getData(contextMainActivity)
 
 
         addTaskBtn.setOnClickListener{
             startActivity(Intent(contextMainActivity,TaskFormActivity::class.java))
         }
+
+
 
 
 

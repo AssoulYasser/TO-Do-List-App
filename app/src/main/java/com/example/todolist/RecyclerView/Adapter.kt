@@ -2,11 +2,12 @@ package com.example.todolist.RecyclerView
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.R
 import com.example.todolist.data.Model
 
-class Adapter(var initData:MutableList<Model>) : RecyclerView.Adapter<Holder>() {
+class Adapter(initData:MutableList<Model>) : RecyclerView.Adapter<Holder>() {
 
     private var data:MutableList<Model> = initData
 
@@ -15,9 +16,13 @@ class Adapter(var initData:MutableList<Model>) : RecyclerView.Adapter<Holder>() 
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
+        holder.data = data[position]
         holder.titleView.text = data[position].title
-        holder.timeView.text = data[position].time.toString()
+        holder.timeView.text = data[position].time
+        holder.checkBoxView.isChecked = data[position].isDone
     }
+
+
 
     override fun getItemCount(): Int {
         return data.size

@@ -13,8 +13,8 @@ interface APIservice {
     fun getAllTasks() : Call<MutableList<Model>>
 
     @DELETE("/tasks/")
-    fun deleteTask(@Query("id") id: Long) : Call<Model>
+    fun deleteTask(@Query("id") id: Long) : Call<Void>
 
     @PUT("/tasks/")
-    fun updateTask(@Body model: Model) : Call<Model>
+    fun updateTask(@Body model: Model) : Call<Void>
 }

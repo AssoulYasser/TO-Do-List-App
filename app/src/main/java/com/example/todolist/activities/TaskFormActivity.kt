@@ -49,10 +49,8 @@ class TaskFormActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                if (s != null) {
-                    if (s.length == 2 && s[0] == '2' && s[1] !in '0'..'3')
-                        hourTV.setText("23")
-                    else if (s.length == 1 && s[0] !in '0'..'2')
+                if(!s.isNullOrEmpty()){
+                    if(s.length>=2 && s.toString() !in "00".."23")
                         hourTV.setText("23")
                 }
 
@@ -70,10 +68,10 @@ class TaskFormActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                if (s != null)
-                    if (s.length == 1 && s[0] == '6')
+                if (!s.isNullOrEmpty()) {
+                    if(s.length>=2 && s.toString() !in "00".."59")
                         minutTV.setText("59")
-
+                }
             }
         })
 
