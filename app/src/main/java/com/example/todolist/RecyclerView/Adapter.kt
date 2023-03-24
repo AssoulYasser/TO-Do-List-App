@@ -2,14 +2,13 @@ package com.example.todolist.RecyclerView
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.R
-import com.example.todolist.data.Model
+import com.example.todolist.data.TaskModel
 
-class Adapter(initData:MutableList<Model>) : RecyclerView.Adapter<Holder>() {
+class Adapter(initData:MutableList<TaskModel>) : RecyclerView.Adapter<Holder>() {
 
-    private var data:MutableList<Model> = initData
+    private var data:MutableList<TaskModel> = initData
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         return Holder(LayoutInflater.from(parent.context).inflate(R.layout.rv_item, parent, false))
@@ -28,8 +27,8 @@ class Adapter(initData:MutableList<Model>) : RecyclerView.Adapter<Holder>() {
         return data.size
     }
 
-    fun addData(model:Model){
-        data.add(model)
+    fun addData(taskModel:TaskModel){
+        data.add(taskModel)
         notifyDataSetChanged()
     }
 
@@ -47,14 +46,14 @@ class Adapter(initData:MutableList<Model>) : RecyclerView.Adapter<Holder>() {
         return 0
     }
 
-    fun updateData(model:Model){
-        var index:Int = getIndex(model.id)
+    fun updateData(taskModel:TaskModel){
+        var index:Int = getIndex(taskModel.id)
 
-        data[index].title = model.title
-        data[index].description = model.description
+        data[index].title = taskModel.title
+        data[index].description = taskModel.description
     }
 
-    fun refreshData(list:MutableList<Model>){
+    fun refreshData(list:MutableList<TaskModel>){
         data = list
         notifyDataSetChanged()
     }

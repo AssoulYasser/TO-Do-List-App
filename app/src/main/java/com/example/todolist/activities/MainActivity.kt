@@ -14,6 +14,7 @@ import com.example.todolist.RecyclerView.*
 import com.example.todolist.Retrofit.*
 import com.example.todolist.data.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.header_item.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,8 +26,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE)
+
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
+        myTextHeader.text = "Good Morning, ${sharedPreferences.getString("USERNAME", "USERNAME")}"
 
         val recycler:RecyclerView = findViewById(R.id.myRecyclerView)
 
@@ -41,7 +45,20 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(contextMainActivity,TaskFormActivity::class.java))
         }
 
-
+        logout.setOnClickListener {
+            Log.d("EXCEPTION RES:", "Shared Pref in main activity")
+            val sharedPreferences = AuthActivity.sharedPreferences
+            with(sharedPreferences.edit()){
+                putBoolean("IS_SIGNED", false)
+                putString("TOKEN", "")
+                putString("USERNAME", "")
+                apply()
+            }
+            Log.d("EXCEPTION RES:", "After pressing logout your boolean is : " + sharedPreferences.getBoolean("IS_SIGNED", false).toString())
+            Log.d("EXCEPTION RES:", "Getting back to Auth Act")
+            startActivity(Intent(this,AuthActivity::class.java))
+            finish()
+        }
 
 
 

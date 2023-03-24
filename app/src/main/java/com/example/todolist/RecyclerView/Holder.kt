@@ -1,7 +1,6 @@
 package com.example.todolist.RecyclerView
 
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import android.widget.CheckBox
 import android.widget.TextView
@@ -18,7 +17,7 @@ class Holder(item: View) : RecyclerView.ViewHolder(item) {
     var timeView:TextView = item.findViewById(R.id.timeTV)
     var checkBoxView:CheckBox = item.findViewById(R.id.doneCB)
 
-    lateinit var data:com.example.todolist.data.Model
+    lateinit var data:com.example.todolist.data.TaskModel
 
     init {
         item.setOnClickListener {

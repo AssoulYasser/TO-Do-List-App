@@ -5,8 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.todolist.R
 import com.example.todolist.Retrofit.HttpRequest
-import com.example.todolist.Retrofit.Retrofit
-import com.example.todolist.data.Model
+import com.example.todolist.data.TaskModel
 import kotlinx.android.synthetic.main.activity_task_form.*
 
 class TaskDetailsActivity : AppCompatActivity() {
@@ -23,20 +22,28 @@ class TaskDetailsActivity : AppCompatActivity() {
         minutTV.setText(intent.getStringExtra("time")?.split(":")?.get(1) ?: "")
         addBtn.text = "UPDATE"
 
-        var data = Model(
+
+
+
+
+        addBtn.setOnClickListener{
+            val data = TaskModel(
             intent.getLongExtra("id", 0),
             titleTV.text.toString(), descriptionTV.text.toString(),
             "${hourTV.text}:${minutTV.text}:00",
             false
-        )
-
-
-        addBtn.setOnClickListener{
+            )
             HttpRequest.updateData(data)
             finish()
         }
 
         delBtn.setOnClickListener {
+            val data = TaskModel(
+                intent.getLongExtra("id", 0),
+                titleTV.text.toString(), descriptionTV.text.toString(),
+                "${hourTV.text}:${minutTV.text}:00",
+                false
+            )
             HttpRequest.deleteData(data.id)
             finish()
         }

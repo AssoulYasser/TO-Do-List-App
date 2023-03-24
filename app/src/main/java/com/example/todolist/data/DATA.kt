@@ -4,7 +4,7 @@ import com.example.todolist.RecyclerView.Adapter
 
 object DATA {
     val adapter = Adapter(mutableListOf())
-    lateinit var newData:Model
+    lateinit var newData:TaskModel
 
 
 

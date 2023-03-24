@@ -7,25 +7,15 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.ArrayAdapter
-import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.todolist.R
-import com.example.todolist.Retrofit.APIservice
 import com.example.todolist.Retrofit.HttpRequest
-import com.example.todolist.Retrofit.Retrofit
 import com.example.todolist.data.DATA
-import com.example.todolist.data.Model
+import com.example.todolist.data.TaskModel
 import kotlinx.android.synthetic.main.activity_task_form.*
 import kotlinx.android.synthetic.main.activity_task_form.titleTV
-import kotlinx.android.synthetic.main.rv_item.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.time.LocalTime
-import kotlin.math.min
 
 class TaskFormActivity : AppCompatActivity() {
     val contextTaskFormActivity = this
@@ -78,7 +68,7 @@ class TaskFormActivity : AppCompatActivity() {
 
         addBtn.setOnClickListener {
             if(isValid()) {
-                DATA.newData = Model(
+                DATA.newData = TaskModel(
                     0,
                     titleTV.text.toString(),
                     descriptionTV.text.toString(),
